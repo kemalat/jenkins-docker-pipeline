@@ -1,29 +1,36 @@
-def DOCKER_HUB_USER="kemalat"
-def HTTP_PORT="8080"
+node {
+    def app
 
-pipeline {
+    stage('Clone repository') {
+        /* Let's make sure we have the repository cloned to our workspace */
 
-  environment {
-    registry = "kemalat/sbootdocker"
-    registryCredential = 'dockerhub'
-    PATH = "/usr/local/bin:$PATH"
-  }
-
-  stages {
-
-    stage('Checkout') {
         checkout scm
-        sh 'git checkout master'
-        sh 'printenv'
     }
-    stage('Unit Test'){
 
-      PATH = "/usr/local/bin:${env.PATH}"
+    stage('Build image') {
+        /* This builds the actual image; synonymous to
+         * docker build on the command line */
 
-      sh 'docker-compose -f docker-compose-test-and-package.yml up --abort-on-container-exit'
-      sh 'docker-compose -f docker-compose-test-and-package.yml down -v'
-      sh 'docker rmi -f sbootdocker-test'
+        app = docker.build("devops/hello")
     }
-  }
 
+    stage('Test image') {
+        /* Ideally, we would run a test framework against our image.
+         * For this example, we're using a Volkswagen-type approach ;-) */
+
+        app.inside {
+            sh 'echo "Tests passed"'
+        }
+    }
+
+    stage('Push image') {
+        /* Finally, we'll push the image with two tags:
+         * First, the incremental build number from Jenkins
+         * Second, the 'latest' tag.
+         * Pushing multiple tags is cheap, as all the layers are reused. */
+        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+            app.push("${env.BUILD_NUMBER}")
+            app.push("latest")
+        }
+    }
 }
