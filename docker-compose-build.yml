@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  sbootdocker:
+    #    container_name: eyeflex-core:$TAG
+    build: .
+    image: kemalat/sbootdocker:$TAG
+    ports:
+      - "8080"

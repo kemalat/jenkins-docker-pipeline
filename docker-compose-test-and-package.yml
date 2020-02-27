@@ -1,0 +1,7 @@
+version: '2'
+
+services:
+  sbootdocker-test:
+    build: .
+    image: sbootdocker-test
+    command: mvn clean package -DskipTests
