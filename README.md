@@ -12,3 +12,9 @@ Versioning the Jenkinsfile to source code control provides several advantages, y
 ## Writing a Jenkins File
 
 
+
+## Jenkins with Docker 
+
+Jenkins need have installed docker inside it to execute Docker commands according to pipeline script directives.
+https://hub.docker.com/r/jenkins/jenkins/ 
+
