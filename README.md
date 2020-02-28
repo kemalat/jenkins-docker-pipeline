@@ -20,4 +20,5 @@ Pull jenkins image provided by jenkinsci and run image with below docker run opt
 docker pull jenkins/jenkins
 
 docker run -d -u root -p 9001:8080 -v $PWD/jenkins:/var/jenkins_home:z -t -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):/usr/bin/docker jenkins/jenkins
+docker stop 9c6517f1b294
 ```
