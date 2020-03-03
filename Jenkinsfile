@@ -1,10 +1,21 @@
 node {
     def app
-
+    
+    agent {
+        docker {
+            image 'maven:3-alpine' 
+            args '-v /root/.m2:/root/.m2' 
+        }
+    }
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
-
         checkout scm
+    }
+
+    stage('Build') { 
+        steps {
+            sh 'mvn -B -DskipTests clean package' 
+        }
     }
 
     stage('Build image') {
