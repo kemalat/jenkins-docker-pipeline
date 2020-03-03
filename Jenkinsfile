@@ -1,12 +1,11 @@
-node {
-    def app
-    
+pipeline {
     agent {
         docker {
             image 'maven:3-alpine' 
             args '-v /root/.m2:/root/.m2' 
         }
     }
+    
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
         checkout scm
