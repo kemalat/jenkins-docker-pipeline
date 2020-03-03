@@ -11,7 +11,7 @@ Versioning the Jenkinsfile to source code control provides several advantages, y
 
 ## Jenkins with Docker 
 
-Jenkins need have installed docker inside it to execute Docker commands according to pipeline script directives.
+Jenkins needs have installed docker inside it to execute Docker commands according to pipeline script directives.
 https://hub.docker.com/r/jenkins/jenkins/ 
 
 Pull jenkins image provided by jenkinsci and run image with below docker run options. Root user is required to execute root tasks inside the DockerFile of jenkins container. In order to avoid, var/run/docker.sock access denied or docker command not found docker run must be executed as shown below. You should have the root or sudo user on your environment. 
