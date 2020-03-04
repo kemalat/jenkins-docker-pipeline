@@ -50,7 +50,7 @@ pipeline {
                 steps{
                     withCredentials([usernamePassword( credentialsId: '97423d7a-052d-4eb0-ae4b-fd759ad37d8e', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         script {
-                            docker.withRegistry('https://registry.hub.docker.com','97423d7a-052d-4eb0-ae4b-fd759ad37d8e') {
+                            docker.withRegistry('','97423d7a-052d-4eb0-ae4b-fd759ad37d8e') {
                                 sh "docker login -u ${USERNAME} -p ${PASSWORD}"
                                 app.push("${env.BUILD_NUMBER}")
                                 app.push("latest")
