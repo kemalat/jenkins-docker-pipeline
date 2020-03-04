@@ -49,7 +49,7 @@ pipeline {
              * Pushing multiple tags is cheap, as all the layers are reused. */
             steps{
                 script {
-                    docker.withRegistry([ credentialsId: "97423d7a-052d-4eb0-ae4b-fd759ad37d8e", url: "https://registry.hub.docker.com" ]) {
+                    docker.withRegistry('https://registry.hub.docker.com','97423d7a-052d-4eb0-ae4b-fd759ad37d8e') {
                         app.push("${env.BUILD_NUMBER}")
                         app.push("latest")
                     }
