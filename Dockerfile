@@ -13,5 +13,6 @@ ADD target/lib /app/lib
 WORKDIR /app
 RUN mkdir -p /app/tmp
 # Web port.
+CMD /usr/bin/java -Xmx400m -Xms400m  -XX:TieredStopAtLevel=1 -noverify -jar springboot-docker.jar
 EXPOSE 8081
-ENTRYPOINT ["java","-cp","springboot-docker.jar:lib/*","hello.Application"]
+#ENTRYPOINT ["java","-cp","springboot-docker.jar:lib/*","hello.Application"]
