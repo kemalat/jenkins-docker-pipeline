@@ -48,7 +48,7 @@ pipeline {
              * Second, the 'latest' tag.
              * Pushing multiple tags is cheap, as all the layers are reused. */
                 steps{
-                    withCredentials([usernamePassword( credentialsId: 'docker-hub-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    withCredentials([usernamePassword( credentialsId: '97423d7a-052d-4eb0-ae4b-fd759ad37d8e', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         script {
                             docker.withRegistry('https://registry.hub.docker.com','97423d7a-052d-4eb0-ae4b-fd759ad37d8e') {
                                 sh "docker login -u ${USERNAME} -p ${PASSWORD}"
