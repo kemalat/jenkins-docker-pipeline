@@ -20,6 +20,9 @@ pipeline {
             }
         }
 
+        stage('Publish test results') {
+          junit '**/test-results/test/*.xml'
+        }
         stage('Build image') {
             /* This builds the actual image; synonymous to
              * docker build on the command line */
