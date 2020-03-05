@@ -20,7 +20,8 @@ Versioning the Jenkinsfile to source code control provides several advantages, y
 - Maven 3
 
 
-Jenkins needs run in Docker container which have Docker installed,  pipeline script should be able to execute Docker commands.
+Jenkins pipeline needs to run inside  Docker container which have Docker installed in order to execute Docker commands
+
 https://hub.docker.com/r/jenkins/jenkins/ 
 
 Pull jenkins image provided by jenkinsci and run image with below docker run options. Root user is required to execute root tasks inside the DockerFile of jenkins container. In order to avoid, var/run/docker.sock access denied or docker command not found docker run must be executed as shown below. You should have the root or sudo user on your environment. 
@@ -32,4 +33,4 @@ docker run -d -u root -p 9001:8080 -v $PWD/jenkins:/var/jenkins_home:z -t -v /va
 docker stop 9c6517f1b294
 ```
 
-After runnning the docker image, other installation steps are pretty straight forward and you can find instructions on internet everywhere. 
+After runnning the docker image, other installation steps are pretty straight forward and you can find instructions on internet everywhere. You can review the Jenkinsfile to see the flow in details. 
