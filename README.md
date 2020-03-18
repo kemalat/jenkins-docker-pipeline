@@ -1,5 +1,4 @@
 # jenkins-pipeline-build-dockerize-run
-Review of Jenkins file which prepares packages, run tests, perform docker builds  and runs docker images
 
 A continuous delivery (CD) pipeline is an automated process for getting software from version control and building the 
 software through multiple stages of testing and deployment. Jenkins Pipeline is a suite of plugins which supports implementing and integrating continuous delivery pipelines into Jenkins. Jenkins Pipeline is defined as the Jenkins file which is a groovy based script that lists the different stages and steps of the Jenkins build.
@@ -17,6 +16,7 @@ Versioning the Jenkinsfile to source code control provides several advantages, y
 - Java 8 or higher
 - Java IDE environment
 - Maven 3
+- Jenkins Docker image
 
 
 ## Jenkins with Docker 
